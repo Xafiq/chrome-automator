@@ -11,17 +11,332 @@ agent:
     - task: "Compose a new message like this but make sure only the first name of the contact is used, ignore the last name: '{{get_message('greeting', contact, agent.name)}}' and send the message"
     - task: "After sending the previous one, compose new message: '{{get_message('subscription_offer', contact, agent.name)}}' and send the message"
 
-    # - task: "Press Ctrl + W to close the current tab"
-    #   system: "windows"
-
 messages:
   greeting:
-    es: "Hola {name} como estas? Soy {agent_name} de 4geeks"
-    en: "Hi {name}, how are you? I'm {agent_name} from 4geeks"
+    es: "Hola {name}, ¿cómo estás? Soy {agent_name} de 4geeks."
+    en: "Hi {name}, how are you? I'm {agent_name} from 4geeks."
   subscription_offer:
-    es: "Quería contarte sobre nuestra modalidad de suscripción (anual o mensual), que te da acceso a 4 cursos para aprender a tu propio ritmo:
-Full Stack, Data Science, Python, Vibe Coding with AI
-Es una excelente opción si buscás flexibilidad y querés formarte en tecnología con contenidos de calidad. ¿Te gustaría que te comparta más información?"
-    en: "I wanted to tell you about our subscription model (annual or monthly), which gives you access to 4 courses to learn at your own pace:
-Full Stack, Data Science, Python, Vibe Coding with AI
-It's an excellent option if you're looking for flexibility and want to learn technology with quality content. Would you like me to share more information?"
+    es: "Quería contarte sobre nuestra modalidad de suscripción (anual o mensual), que te da acceso a 4 cursos para aprender a tu propio ritmo: Full Stack, Data Science, Python, Vibe Coding with AI. Es una excelente opción si buscas flexibilidad y quieres formarte en tecnología con contenidos de calidad. ¿Te gustaría que te comparta más información?"
+    en: "I wanted to tell you about our subscription model (annual or monthly), which gives you access to 4 courses to learn at your own pace: Full Stack, Data Science, Python, Vibe Coding with AI. It's an excellent option if you're looking for flexibility and want to learn technology with quality content. Would you like me to share more information?"
+  self_paced_benefits:
+    es: "Nuestros cursos autodirigidos están diseñados para adaptarse a tu horario y necesidades específicas. Con acceso a mentoría ilimitada 1:1, soporte comunitario vibrante y aprendizaje basado en proyectos, podrás adquirir habilidades cruciales y construir un portafolio sólido sin interrumpir tu vida actual. Además, ofrecemos una garantía de empleo para muchos de nuestros programas, demostrando nuestra confianza en tu éxito."
+    en: "Our self-paced courses are designed to fit your schedule and specific needs. With access to unlimited 1:1 mentoring, vibrant community support, and project-based learning, you can acquire crucial skills and build a strong portfolio without disrupting your current life. Plus, we offer a job guarantee for many of our programs, demonstrating our confidence in your success."
+  empathy:
+    es: "Entiendo lo ocupado que puede estar la vida. Muchos estudiantes tienen preocupaciones similares y es normal sentirse inseguro al comenzar algo nuevo. Te escucho; equilibrar compromisos con aspiraciones profesionales puede ser un desafío, pero estamos aquí para apoyarte en cada paso del camino."
+    en: "I understand how busy life can get. Many students have similar concerns, and it's normal to feel unsure when starting something new. I hear you; balancing commitments with career aspirations can be challenging, but we are here to support you every step of the way."
+  solution:
+    es: "Ofrecemos opciones flexibles y autodirigidas para que puedas aprender a tu propio ritmo. Nuestra plataforma impulsada por IA y la mentoría humana ilimitada aseguran que nunca te quedes atascado. Puedes adquirir habilidades cruciales y construir un portafolio sin interrumpir tu vida actual. Además, nuestra comunidad de apoyo y mentores están siempre disponibles para ayudarte a superar cualquier obstáculo."
+    en: "We offer flexible and self-directed options so you can learn at your own pace. Our AI-driven platform and unlimited human mentoring ensure you never get stuck. You can acquire crucial skills and build a portfolio without disrupting your current life. Plus, our supportive community and mentors are always available to help you overcome any obstacles."
+  encouragement:
+    es: "Definitivamente puedes lograr tus objetivos tecnológicos con el apoyo adecuado. Tu impulso por aprender es el factor más importante, y nosotros proporcionamos las herramientas para hacerlo realidad. Cada pequeño paso que des te acercará más a tus metas y sueños. Recuerda que cada experto fue alguna vez un principiante, y tú también puedes lograrlo."
+    en: "You can definitely achieve your tech goals with the right support. Your drive to learn is the most important factor, and we provide the tools to make it happen. Every small step you take will bring you closer to your goals and dreams. Remember that every expert was once a beginner, and you can do it too."
+  cta:
+    es: "¿Te gustaría más información sobre nuestro 'Solo Bootcamp' autodirigido? ¿Puedo conectarte con un asesor para una llamada rápida y explorar qué opción flexible se ajusta mejor a tus necesidades? ¿Qué tal si te inscribimos en el trabajo previo gratuito 'Start Coding' para que puedas experimentar LearnPack en primera persona?"
+    en: "Would you like more information about our self-directed 'Solo Bootcamp'? Can I connect you with an advisor for a quick call to explore which flexible option best fits your needs? How about we sign you up for the free 'Start Coding' pre-work so you can experience LearnPack firsthand?"
+  about:
+    general:
+      es: "4Geeks Academy es un bootcamp de codificación global que ayuda a los estudiantes a transicionar a carreras tecnológicas. Fundada en 2015, ofrece programas inmersivos y flexibles, fuerte apoyo profesional y un plan de estudios práctico basado en proyectos. Reconocida por Forbes, Newsweek y SwitchUp como un bootcamp de codificación líder, y licenciada por el Departamento de Educación de Florida, EE.UU."
+      en: "4Geeks Academy is a global coding bootcamp that helps students transition to tech careers. Founded in 2015, it offers immersive and flexible programs, strong professional support, and a practical, project-based curriculum. Recognized by Forbes, Newsweek, and SwitchUp as a leading coding bootcamp, and licensed by the Florida Department of Education, USA."
+    community:
+      es: "Únete a nuestra comunidad internacional de más de 4000 estudiantes, profesores, socios y alumnos. Conéctate a través de varios canales como Slack, GitHub, redes sociales y nuestra plataforma exclusiva 4Geeks.com. Donde hay un geek, hay un camino."
+      en: "Join our international community of over 4,000 students, teachers, partners, and alumni. Connect through various channels like Slack, GitHub, social networks, and our exclusive platform 4Geeks.com. Where there is a geek, there is a way."
+  programs:
+    - name:
+        es: "Full Stack Coding Bootcamp"
+        en: "Full Stack Coding Bootcamp"
+      desc:
+        es: "Programa insignia que enseña Python, React y JavaScript para el desarrollo full-stack. Amigable para principiantes, disponible a tiempo completo (9 semanas), tiempo parcial (16-18 semanas) y autoaprendizaje (Solo Bootcamp). Se enfoca en la construcción de aplicaciones web del mundo real."
+        en: "Flagship program teaching Python, React, and JavaScript for full-stack development. Beginner-friendly, available full-time (9 weeks), part-time (16-18 weeks), and self-paced (Solo Bootcamp). Focuses on building real-world web applications."
+      details:
+        duration:
+          full_time:
+            es: "9 semanas"
+            en: "9 weeks"
+          part_time:
+            es: "16-18 semanas"
+            en: "16-18 weeks"
+          self_paced:
+            es: "Flexible"
+            en: "Flexible"
+        languages: ["Python", "React", "JavaScript"]
+        focus:
+          es: "Aplicaciones web del mundo real"
+          en: "Real-world web applications"
+        certificate:
+          es: "Certificado Oficial de Finalización de 4Geeks, reconocido por múltiples instituciones. Puedes elegir entre inglés y español para el plan de estudios y el contenido. Las clases en vivo se imparten en el idioma de tu campus."
+          en: "Official 4Geeks Completion Certificate, recognized by multiple institutions. You can choose between English and Spanish for the curriculum and content. Live classes are taught in the language of your campus."
+    - name:
+        es: "Data Science and Machine Learning Bootcamp"
+        en: "Data Science and Machine Learning Bootcamp"
+      desc:
+        es: "Se enfoca en Python para la recolección de datos, gestión, creación de modelos y resolución de problemas con Machine Learning, Deep Learning y AI. Disponible a tiempo completo, tiempo parcial y autoaprendizaje."
+        en: "Focuses on Python for data collection, management, model building, and problem-solving with Machine Learning, Deep Learning, and AI. Available full-time, part-time, and self-paced."
+      details:
+        duration:
+          full_time:
+            es: "16 semanas"
+            en: "16 weeks"
+          part_time:
+            es: "24 semanas"
+            en: "24 weeks"
+          self_paced:
+            es: "Flexible"
+            en: "Flexible"
+        languages: ["Python"]
+        focus:
+          es: "Machine Learning, Deep Learning, AI"
+          en: "Machine Learning, Deep Learning, AI"
+        certificate:
+          es: "Certificado Oficial de Finalización de 4Geeks, reconocido por múltiples instituciones. Puedes elegir entre inglés y español para el plan de estudios y el contenido. Las clases en vivo se imparten en el idioma de tu campus."
+          en: "Official 4Geeks Completion Certificate, recognized by multiple institutions. You can choose between English and Spanish for the curriculum and content. Live classes are taught in the language of your campus."
+    - name:
+        es: "Cybersecurity Bootcamp"
+        en: "Cybersecurity Bootcamp"
+      desc:
+        es: "Nuestros bootcamp te ayuda a aprender todo lo necesario para empezar en el mundo de la ciberseguridad, enfocándose en identificar, gestionar y mitigar vulnerabilidades del sistema en cumplimiento con ISO y otros estándares. Disponible a tiempo completo, tiempo parcial y autoaprendizaje."
+        en: "Our bootcamp helps you learn everything you need to start in the world of cybersecurity, focusing on identifying, managing, and mitigating system vulnerabilities in compliance with ISO and other standards. Available full-time, part-time, and self-paced."
+      details:
+        duration:
+          full_time:
+            es: "16 semanas"
+            en: "16 weeks"
+          part_time:
+            es: "24 semanas"
+            en: "24 weeks"
+          self_paced:
+            es: "Flexible"
+            en: "Flexible"
+        focus:
+          es: "Identificación y gestión de vulnerabilidades, cumplimiento con ISO"
+          en: "Identification and management of vulnerabilities, compliance with ISO"
+        certificate:
+          es: "Certificado Oficial de Finalización de 4Geeks, reconocido por múltiples instituciones. Puedes elegir entre inglés y español para el plan de estudios y el contenido. Las clases en vivo se imparten en el idioma de tu campus. Además, se ofrece acceso a exámenes de Cisco para certificaciones de ciberseguridad como 'CEH' (Ethical Hacker) y 'CCST' (Cisco Certified Support Technician)."
+          en: "Official 4Geeks Completion Certificate, recognized by multiple institutions. You can choose between English and Spanish for the curriculum and content. Live classes are taught in the language of your campus. Additionally, access to Cisco exams for cybersecurity certifications such as 'CEH' (Ethical Hacker) and 'CCST' (Cisco Certified Support Technician) is offered."
+    - name:
+        es: "Applied AI (No Code)"
+        en: "Applied AI (No Code)"
+      desc:
+        es: "Un curso de 6 semanas diseñado para profesionales que desean aprovechar la IA generativa (ChatGPT, Claude, Llama3, Stable Diffusion, DALL-E, Midjourney) para la productividad y el crecimiento profesional, sin necesidad de experiencia previa en codificación. Incluye 2 clases en línea en vivo por semana (máx. 12 personas) y mentoría 1:1."
+        en: "A 6-week course designed for professionals who want to leverage generative AI (ChatGPT, Claude, Llama3, Stable Diffusion, DALL-E, Midjourney) for productivity and professional growth, with no prior coding experience required. Includes 2 live online classes per week (max. 12 people) and 1:1 mentoring."
+      details:
+        duration:
+          es: "6 semanas"
+          en: "6 weeks"
+        focus:
+          es: "IA generativa, productividad y crecimiento profesional"
+          en: "Generative AI, productivity, and professional growth"
+        classes:
+          es: "2 clases en línea en vivo por semana"
+          en: "2 live online classes per week"
+        mentoring:
+          es: "Mentoría 1:1"
+          en: "1:1 Mentoring"
+        certificate:
+          es: "Certificado Oficial de Finalización de 4Geeks, reconocido por múltiples instituciones. Puedes elegir entre inglés y español para el plan de estudios y el contenido. Las clases en vivo se imparten en el idioma de tu campus."
+          en: "Official 4Geeks Completion Certificate, recognized by multiple institutions. You can choose between English and Spanish for the curriculum and content. Live classes are taught in the language of your campus."
+    - name:
+        es: "Full Stack Bootcamp"
+        en: "Full Stack Bootcamp"
+      desc:
+        es: "Un programa avanzado en línea de tiempo parcial de 16 semanas que requiere al menos un año de experiencia previa en desarrollo de software. Se enfoca en conceptos avanzados de ingeniería de software y calidad de proyectos."
+        en: "An advanced online part-time program of 16 weeks that requires at least one year of prior software development experience. Focuses on advanced software engineering concepts and project quality."
+      details:
+        duration:
+          es: "16 semanas"
+          en: "16 weeks"
+        requirements:
+          es: "Al menos un año de experiencia previa en desarrollo de software"
+          en: "At least one year of prior software development experience"
+        focus:
+          es: "Conceptos avanzados de ingeniería de software y calidad de proyectos"
+          en: "Advanced software engineering concepts and project quality"
+        certificate:
+          es: "Certificado Oficial de Finalización de 4Geeks, reconocido por múltiples instituciones. Puedes elegir entre inglés y español para el plan de estudios y el contenido. Las clases en vivo se imparten en el idioma de tu campus."
+          en: "Official 4Geeks Completion Certificate, recognized by multiple institutions. You can choose between English and Spanish for the curriculum and content. Live classes are taught in the language of your campus."
+  methodology:
+    description:
+      es: "Aula invertida: la teoría (videos, animaciones, infografías) se entrega fuera de clase, el tiempo de clase (virtual o presencial) se dedica a debates, construcción de proyectos y mentoría directa. Hace hincapié en una baja ratio mentor-estudiante (1:7 en promedio), mentoría ilimitada 1:1 (sesiones de 45 minutos), asistencia de codificación impulsada por IA (Rigobot) y aprendizaje práctico basado en proyectos. Los estudiantes construyen aplicaciones completas, sin exámenes tradicionales."
+      en: "Flipped classroom: theory (videos, animations, infographics) is delivered outside of class, class time (virtual or in-person) is dedicated to debates, project building, and direct mentoring. Emphasizes a low mentor-student ratio (1:7 on average), unlimited 1:1 mentoring (45-minute sessions), AI-driven coding assistance (Rigobot), and project-based practical learning. Students build complete applications, with no traditional exams."
+  locations:
+    - es: "Miami"
+      en: "Miami"
+    - es: "Orlando"
+      en: "Orlando"
+    - es: "Boca Raton"
+      en: "Boca Raton"
+    - es: "Houston"
+      en: "Houston"
+    - es: "Chicago"
+      en: "Chicago"
+    - es: "Atlanta"
+      en: "Atlanta"
+    - es: "Toronto"
+      en: "Toronto"
+    - es: "Madrid"
+      en: "Madrid"
+    - es: "Santiago (Chile)"
+      en: "Santiago (Chile)"
+    - es: "Caracas"
+      en: "Caracas"
+    - es: "Maracaibo"
+      en: "Maracaibo"
+    - es: "Bogotá"
+      en: "Bogotá"
+    - es: "Ciudad de México"
+      en: "Mexico City"
+    - es: "San José (Costa Rica)"
+      en: "San José (Costa Rica)"
+    - es: "Montevideo (Uruguay)"
+      en: "Montevideo (Uruguay)"
+    - es: "En línea"
+      en: "Online"
+  tuition:
+    range:
+      USD:
+        es: "$2,999 a $12,999"
+        en: "$2,999 to $12,999"
+      EUR:
+        es: "€2,700 a €11,700"
+        en: "€2,700 to €11,700"
+      COP:
+        es: "$11,000,000 a $48,000,000"
+        en: "$11,000,000 to $48,000,000"
+      MXN:
+        es: "$50,000 a $220,000"
+        en: "$50,000 to $220,000"
+      CLP:
+        es: "$2,300,000 a $10,000,000"
+        en: "$2,300,000 to $10,000,000"
+      ARS:
+        es: "$270,000 a $1,200,000"
+        en: "$270,000 to $1,200,000"
+      VEF:
+        es: "Bs. 27,000 a Bs. 120,000"
+        en: "Bs. 27,000 to Bs. 120,000"
+      CAD:
+        es: "$3,900 a $17,000"
+        en: "$3,900 to $17,000"
+  career_support:
+    description:
+      es: "Apoyo profesional de por vida (GeekForce), incluyendo coaching personalizado, optimización de currículum y perfil de LinkedIn (compatible con ATS), preparación de entrevistas personalizada para ofertas de trabajo específicas y asistencia en redes. Conecta a los estudiantes con una extensa red de más de 5,000 socios contratantes. Altas tasas de colocación laboral (reportadas entre 84% y 93% dentro de los 90-270 días después de la graduación)."
+      en: "Lifetime professional support (GeekForce), including personalized coaching, resume and LinkedIn profile optimization (ATS-compatible), customized interview preparation for specific job offers, and networking assistance. Connects students with an extensive network of over 5,000 hiring partners. High job placement rates (reported between 84% and 93% within 90-270 days after graduation)."
+  accreditation:
+    description:
+      es: "Reconocida entre los mejores bootcamps de codificación por Forbes (Mejor Bootcamp Full-Stack y de Data Science en línea para estudiantes con presupuesto en 2024), Newsweek (top 10 en EE.UU.) y SwitchUp (top 35 mundial, top en Miami). Tiene la certificación 'ARP' por calidad institucional en educación de codificación en línea. Licenciada por el Departamento de Educación de Florida, EE.UU. Certificaciones regionales específicas pueden variar y deben confirmarse si es necesario."
+      en: "Recognized among the best coding bootcamps by Forbes (Best Online Full-Stack and Data Science Bootcamp for budget students in 2024), Newsweek (top 10 in the U.S.), and SwitchUp (top 35 worldwide, top in Miami). Holds the 'ARP' certification for institutional quality in online coding education. Licensed by the Florida Department of Education, USA. Specific regional certifications may vary and should be confirmed if necessary."
+  admissions:
+    description:
+      es: "Proceso simple y enfocado en la motivación: solicitud en línea, llamada con un asesor para información del programa (plan de estudios, financiamiento) y una entrevista enfocada en la motivación y el ajuste. No se requiere experiencia previa en codificación ni matemáticas avanzadas para los programas de principiantes, aunque se recomienda el pensamiento lógico. Algunos programas avanzados (por ejemplo, Ingeniero de Software Senior) requieren experiencia previa (por ejemplo, 1 año como desarrollador). Requiere un depósito inicial y la finalización de trabajo previo para algunos programas."
+      en: "Simple and motivation-focused process: online application, call with an advisor for program information (curriculum, financing), and an interview focused on motivation and fit. No prior coding or advanced math experience is required for beginner programs, although logical thinking is recommended. Some advanced programs (e.g., Senior Software Engineer) require prior experience (e.g., 1 year as a developer). Requires an initial deposit and completion of pre-work for some programs."
+  reviews:
+    description:
+      es: "Abrasadoras. Los alumnos elogian la metodología práctica y efectiva, la calidad y disponibilidad de los instructores y mentores (mentoría ilimitada 1:1, tiempo de respuesta de 30 minutos), la comunidad de apoyo y las transiciones profesionales exitosas a roles tecnológicos. Los graduados encuentran el plan de estudios moderno y relevante, con muchos consiguiendo trabajo rápidamente en empresas como Microsoft, Facebook, eBay y diversas startups. Algunos estudiantes a tiempo parcial ocasionalmente señalan matices específicos en el ritmo del plan de estudios o los servicios profesionales, pero en general la satisfacción y los resultados son muy altos."
+      en: "Glowing. Students praise the practical and effective methodology, the quality and availability of instructors and mentors (unlimited 1:1 mentoring, 30-minute response time), the supportive community, and successful professional transitions to tech roles. Graduates find the curriculum modern and relevant, with many quickly securing jobs at companies like Microsoft, Facebook, eBay, and various startups. Some part-time students occasionally note specific nuances in the curriculum pace or career services, but overall satisfaction and results are very high."
+  self_paced:
+    name:
+      es: "Solo Bootcamp (A Tu Propio Ritmo)"
+      en: "Solo Bootcamp (Self-Paced)"
+    desc:
+      es: "Ofrece el plan de estudios completo de los bootcamps intensivos (Full Stack, Data Science, Ciberseguridad) con máxima flexibilidad, diseñado para personas con horarios exigentes."
+      en: "Offers the complete curriculum of intensive bootcamps (Full Stack, Data Science, Cybersecurity) with maximum flexibility, designed for people with demanding schedules."
+    features:
+      - name:
+          es: "Aprende a tu propio ritmo"
+          en: "Learn at your own pace"
+        desc:
+          es: "Autonomía completa sobre tu horario de estudio (por ejemplo, 30 minutos al día, bloques de fin de semana)."
+          en: "Complete autonomy over your study schedule (e.g., 30 minutes a day, weekend blocks)."
+      - name:
+          es: "Impulsado por LearnPack"
+          en: "Powered by LearnPack"
+        desc:
+          es: "Plataforma de aprendizaje interactiva propia con cientos de ejercicios interactivos, proyectos del mundo real, tutoriales en video y entornos de codificación integrados (VS Code). Proporciona retroalimentación instantánea, autoevaluada y realiza un seguimiento del progreso."
+          en: "Own interactive learning platform with hundreds of interactive exercises, real-world projects, video tutorials, and integrated coding environments (VS Code). Provides instant, self-assessed feedback and tracks progress."
+      - name:
+          es: "Mentoría impulsada por IA con Rigobot"
+          en: "AI-driven mentoring with Rigobot"
+        desc:
+          es: "Asistente de codificación de IA personalizado proporciona retroalimentación instantánea en tiempo real sobre tu código, ayuda a identificar y entender errores y ofrece evaluaciones de habilidades. Complementa la mentoría humana."
+          en: "Personalized AI coding assistant provides real-time instant feedback on your code, helps identify and understand errors, and offers skill assessments. Complements human mentoring."
+      - name:
+          es: "Mentoría humana 1:1 ilimitada"
+          en: "Unlimited 1:1 human mentoring"
+        desc:
+          es: "Programa sesiones ilimitadas de 45 minutos con mentores expertos para obtener ayuda personalizada en conceptos, desafíos de codificación y consejos profesionales. Elige tu mentor y horario."
+          en: "Schedule unlimited 45-minute sessions with expert mentors for personalized help with concepts, coding challenges, and career advice. Choose your mentor and schedule."
+      - name:
+          es: "Soporte comunitario vibrante"
+          en: "Vibrant community support"
+        desc:
+          es: "Accede a canales activos de Slack para la interacción entre pares y mentores, sesiones en vivo opcionales, sesiones de jam de codificación y reuniones en línea. Parte de una red global de alumnos de más de 4,000 miembros."
+          en: "Access active Slack channels for peer and mentor interaction, optional live sessions, coding jam sessions, and online meetups. Part of a global alumni network of over 4,000 members."
+      - name:
+          es: "Aprendizaje basado en proyectos"
+          en: "Project-based learning"
+        desc:
+          es: "Enfócate en construir un portafolio sólido de aplicaciones del mundo real, esencial para la búsqueda de empleo."
+          en: "Focus on building a strong portfolio of real-world applications, essential for job hunting."
+      - name:
+          es: "Certificación"
+          en: "Certification"
+        desc:
+          es: "Recibe un Certificado Oficial de Finalización de 4Geeks Academy al completar con éxito, reconocido por sus socios contratantes."
+          en: "Receive an Official 4Geeks Academy Completion Certificate upon successful completion, recognized by its hiring partners."
+      - name:
+          es: "Apoyo profesional"
+          en: "Career support"
+        desc:
+          es: "Califica para el mismo apoyo profesional de por vida (GeekForce) que los graduados de bootcamps intensivos, incluyendo coaching personalizado, optimización de currículum/LinkedIn y preparación para entrevistas."
+          en: "Qualify for the same lifetime professional support (GeekForce) as intensive bootcamp graduates, including personalized coaching, resume/LinkedIn optimization, and interview preparation."
+      - name:
+          es: "Garantía de empleo"
+          en: "Job guarantee"
+        desc:
+          es: "A menudo califica para la Garantía de Empleo, demostrando confianza en los resultados incluso para los estudiantes autodidactas."
+          en: "Often qualifies for the Job Guarantee, demonstrating confidence in the results even for self-taught students."
+  free_resources:
+    offerings:
+      - name:
+          es: "Trabajo previo introductorio gratuito"
+          en: "Free introductory pre-work"
+        desc:
+          es: "Un curso en línea autodirigido de 2 semanas que cubre HTML5, CSS y JavaScript básico. Permite a los estudiantes potenciales 'probar antes de comprar' y experimentar la metodología. Puede requerirse un pequeño depósito reembolsable."
+          en: "A 2-week self-directed online course covering basic HTML5, CSS, and JavaScript. Allows potential students to 'try before you buy' and experience the methodology. A small refundable deposit may be required."
+      - name:
+          es: "Talleres gratuitos"
+          en: "Free workshops"
+        desc:
+          es: "Talleres en línea semanales sobre temas populares como Data Science, React, Python, construcción de perfiles y preparación para entrevistas. Excelentes para obtener información práctica y explorar intereses."
+          en: "Weekly online workshops on popular topics such as Data Science, React, Python, profile building, and interview preparation. Great for getting hands-on information and exploring interests."
+      - name:
+          es: "Cursos introductorios gratuitos"
+          en: "Free introductory courses"
+        desc:
+          es: "Cursos gratuitos específicos como 'Start Coding with JavaScript' o 'Deep Dive into Python' ofrecen una manera sin riesgos de aprender los fundamentos y experimentar la plataforma LearnPack."
+          en: "Specific free courses like 'Start Coding with JavaScript' or 'Deep Dive into Python' offer a risk-free way to learn the basics and experience the LearnPack platform."
+    benefits:
+      es: "Ideal para explorar el interés en la tecnología, experimentar el estilo de enseñanza de 4Geeks Academy y desarrollar habilidades fundamentales con un compromiso mínimo."
+      en: "Ideal for exploring interest in technology, experiencing 4Geeks Academy's teaching style, and developing fundamental skills with minimal commitment."
+  history:
+    founder:
+      es: "Fundada por Marcelo Ricigliano en 2015 con la visión de proporcionar una educación tecnológica accesible y efectiva."
+      en: "Founded by Marcelo Ricigliano in 2015 with the vision of providing accessible and effective tech education."
+    achievements:
+      es: "Desde entonces, se han graduado más de 4,000 estudiantes a nivel mundial y continúa evolucionando su plan de estudios, integrando herramientas impulsadas por IA y aprendizaje adaptativo. Reconocida por su enfoque práctico y orientado a la carrera."
+      en: "Since then, over 4,000 students have graduated worldwide and it continues to evolve its curriculum, integrating AI-driven tools and adaptive learning. Recognized for its practical and career-oriented approach."
+    details:
+      es: "Marcelo Ricigliano ha estado fundando startups tecnológicas desde 2010. Antes de 4Geeks Academy, fue el CEO de Vikua, una startup de Smart City que fue nombrada como una de las 30 empresas tecnológicas más prometedoras en Latinoamérica por Forbes."
+      en: "Marcelo Ricigliano has been founding tech startups since 2010. Before 4Geeks Academy, he was the CEO of Vikua, a Smart City startup that was named one of the 30 most promising tech companies in Latin America by Forbes."
+  success:
+    placement_rates:
+      es: "Presume altas tasas de colocación laboral (84-93%) con graduados encontrando empleo dentro de los 90-270 días."
+      en: "Boasts high job placement rates (84-93%) with graduates finding employment within 90-270 days."
+    success_stories:
+      es: "Numerosas historias de éxito de personas que cambian de carrera desde diversos antecedentes no tecnológicos (por ejemplo, derecho, aplicación de la ley) que obtienen roles como desarrolladores de software o científicos de datos."
+      en: "Numerous success stories of people transitioning from diverse non-tech backgrounds (e.g., law, law enforcement) securing roles as software developers or data scientists."
+    companies:
+      es: "Los alumnos trabajan en empresas como Microsoft, Facebook (Meta), eBay, Boatsgroup y diversas startups."
+      en: "Alumni work at companies like Microsoft, Facebook (Meta), eBay, Boatsgroup, and various startups."
+    key_drivers:
+      es: "El énfasis en habilidades prácticas, mentoría sólida y apoyo profesional integral son los principales impulsores del éxito de los alumnos."
+      en: "The emphasis on practical skills, strong mentoring, and comprehensive career support are the key drivers of student success."
