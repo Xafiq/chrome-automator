@@ -5,15 +5,28 @@ agent:
   tasks:
     # Tasks that run on any system
     - task: "Open WhatsApp at https://web.whatsapp.com/send/?phone={{contact.phone}}&text&type=phone_number&app_absent=0 and wait for the website home page to fully load."
-    - task: "After the loading is over, you should see either a not found message or a new conversation on the right side of the screen with the number of the contact on the top of the conversation and one input to write a message at the bottom of the conversation."
-    - task: "If the number is not found, or is invalid, stop because the user does not have WhatsApp installed for that number."
-    - task: "The cursor should be already placed on the input at the bottom of the conversation, ready to start typing a message, if not, click on the input to place the cursor."
-    - task: "Compose a new message like this but make sure only the first name of the contact is used, ignore the last name: '{{get_message('greeting', contact, agent.name)}}' and send the message."
-    - task: "After sending the previous one, compose a new message: '{{get_message('subscription_offer', contact, agent.name)}}' and send the message."
+    - task: "After the loading is over, you should see ether a not found message or a new conversation on the right side of the screen with the number of the contact on the top of the conversation and one input to write a message at the bottom of the conversation"
+    - task: "If the number is not found, or is invalid, stop because the user does not have whatsapp installed for that number"
+    - task: "The cursor should be already placed on the input at the bottom of the conversation, ready to start typing a message, if not, click on the input to place the cursor"
+    - task: "Compose a new message like this but make sure only the first name of the contact is used, ignore the last name: '{{get_message('greeting', contact, agent.name)}}' and send the message"
+    - task: "After sending the previous one, compose new message: '{{get_message('subscription_offer', contact, agent.name)}}' and send the message"
     - task: "Wait for a response from the contact. If the contact responds positively, proceed to send the next message: '{{get_message('self_paced_benefits', contact, agent.name)}}'."
     - task: "If the contact expresses concerns or hesitation, send the following message: '{{get_message('empathy', contact, agent.name)}}'."
     - task: "Follow up with a message offering solutions: '{{get_message('solution', contact, agent.name)}}'."
     - task: "Encourage the contact with the following message: '{{get_message('encouragement', contact, agent.name)}}'."
+    - task: "End with a call to action: '{{get_message('cta', contact, agent.name)}}'."
+    - task: "Wait for a response from the contact for up to 5 minutes."
+    - task: "If the contact does not respond, send a gentle reminder: '{{get_message('reminder', contact, agent.name)}}' and wait another 5 minutes."
+    - task: "If still no response, send a final follow-up: '{{get_message('final_followup', contact, agent.name)}}'. If there is still no response, close the conversation politely."
+    - task: "If the contact responds positively, proceed to send the next message: '{{get_message('self_paced_benefits', contact, agent.name)}}'."
+    - task: "If the contact asks for more information about courses, pricing, or schedule, provide the relevant details from the 'about', 'programs', or 'tuition' sections."
+    - task: "If the contact expresses concerns or hesitation, send the following message: '{{get_message('empathy', contact, agent.name)}}'."
+    - task: "If the contact raises objections (e.g., price, time, value), address each objection with a tailored response from the 'solution' or 'encouragement' messages, and offer to connect with an advisor."
+    - task: "If the contact requests to unsubscribe or not be contacted, send a polite opt-out confirmation and end the conversation."
+    - task: "If the contact responds in a language not supported, reply in English and Spanish, offering to continue in either language."
+    - task: "If the contact is angry or upset, apologize, offer to stop messaging, and end the conversation politely."
+    - task: "If the contact asks technical questions or has issues accessing the platform, offer support or connect them with a technical advisor."
+    - task: "After all objections are handled, encourage the contact with the following message: '{{get_message('encouragement', contact, agent.name)}}'."
     - task: "End with a call to action: '{{get_message('cta', contact, agent.name)}}'."
 
 messages:
@@ -230,4 +243,118 @@ messages:
       es: "Reconocida entre los mejores bootcamps de codificación por Forbes (Mejor Bootcamp Full-Stack y de Data Science en línea para estudiantes con presupuesto en 2024), Newsweek (top 10 en EE.UU.) y SwitchUp (top 35 mundial, top en Miami). Tiene la certificación 'ARP' por calidad institucional en educación de codificación en línea. Licenciada por el Departamento de Educación de Florida, EE.UU. Certificaciones regionales específicas pueden variar y deben confirmarse si es necesario."
       en: "Recognized among the best coding bootcamps by Forbes (Best Online Full-Stack and Data Science Bootcamp for budget students in 2024), Newsweek (top 10 in the U.S.), and SwitchUp (top 35 worldwide, top in Miami). Holds the 'ARP' certification for institutional quality in online coding education. Licensed by the Florida Department of Education, USA. Specific regional certifications may vary and should be confirmed if necessary."
   admissions:
-    de
+    description:
+      es: "Proceso simple y enfocado en la motivación: solicitud en línea, llamada con un asesor para información del programa (plan de estudios, financiamiento) y una entrevista enfocada en la motivación y el ajuste. No se requiere experiencia previa en codificación ni matemáticas avanzadas para los programas de principiantes, aunque se recomienda el pensamiento lógico. Algunos programas avanzados (por ejemplo, Ingeniero de Software Senior) requieren experiencia previa (por ejemplo, 1 año como desarrollador). Requiere un depósito inicial y la finalización de trabajo previo para algunos programas."
+      en: "Simple and motivation-focused process: online application, call with an advisor for program information (curriculum, financing), and an interview focused on motivation and fit. No prior coding or advanced math experience is required for beginner programs, although logical thinking is recommended. Some advanced programs (e.g., Senior Software Engineer) require prior experience (e.g., 1 year as a developer). Requires an initial deposit and completion of pre-work for some programs."
+  reviews:
+    description:
+      es: "Abrasadoras. Los alumnos elogian la metodología práctica y efectiva, la calidad y disponibilidad de los instructores y mentores (mentoría ilimitada 1:1, tiempo de respuesta de 30 minutos), la comunidad de apoyo y las transiciones profesionales exitosas a roles tecnológicos. Los graduados encuentran el plan de estudios moderno y relevante, con muchos consiguiendo trabajo rápidamente en empresas como Microsoft, Facebook, eBay y diversas startups. Algunos estudiantes a tiempo parcial ocasionalmente señalan matices específicos en el ritmo del plan de estudios o los servicios profesionales, pero en general la satisfacción y los resultados son muy altos."
+      en: "Glowing. Students praise the practical and effective methodology, the quality and availability of instructors and mentors (unlimited 1:1 mentoring, 30-minute response time), the supportive community, and successful professional transitions to tech roles. Graduates find the curriculum modern and relevant, with many quickly securing jobs at companies like Microsoft, Facebook, eBay, and various startups. Some part-time students occasionally note specific nuances in the curriculum pace or career services, but overall satisfaction and results are very high."
+  self_paced:
+    name:
+      es: "Solo Bootcamp (A Tu Propio Ritmo)"
+      en: "Solo Bootcamp (Self-Paced)"
+    desc:
+      es: "Ofrece el plan de estudios completo de los bootcamps intensivos (Full Stack, Data Science, Ciberseguridad) con máxima flexibilidad, diseñado para personas con horarios exigentes."
+      en: "Offers the complete curriculum of intensive bootcamps (Full Stack, Data Science, Cybersecurity) with maximum flexibility, designed for people with demanding schedules."
+    features:
+      - name:
+          es: "Aprende a tu propio ritmo"
+          en: "Learn at your own pace"
+        desc:
+          es: "Autonomía completa sobre tu horario de estudio (por ejemplo, 30 minutos al día, bloques de fin de semana)."
+          en: "Complete autonomy over your study schedule (e.g., 30 minutes a day, weekend blocks)."
+      - name:
+          es: "Impulsado por LearnPack"
+          en: "Powered by LearnPack"
+        desc:
+          es: "Plataforma de aprendizaje interactiva propia con cientos de ejercicios interactivos, proyectos del mundo real, tutoriales en video y entornos de codificación integrados (VS Code). Proporciona retroalimentación instantánea, autoevaluada y realiza un seguimiento del progreso."
+          en: "Own interactive learning platform with hundreds of interactive exercises, real-world projects, video tutorials, and integrated coding environments (VS Code). Provides instant, self-assessed feedback and tracks progress."
+      - name:
+          es: "Mentoría impulsada por IA con Rigobot"
+          en: "AI-driven mentoring with Rigobot"
+        desc:
+          es: "Asistente de codificación de IA personalizado proporciona retroalimentación instantánea en tiempo real sobre tu código, ayuda a identificar y entender errores y ofrece evaluaciones de habilidades. Complementa la mentoría humana."
+          en: "Personalized AI coding assistant provides real-time instant feedback on your code, helps identify and understand errors, and offers skill assessments. Complements human mentoring."
+      - name:
+          es: "Mentoría humana 1:1 ilimitada"
+          en: "Unlimited 1:1 human mentoring"
+        desc:
+          es: "Programa sesiones ilimitadas de 45 minutos con mentores expertos para obtener ayuda personalizada en conceptos, desafíos de codificación y consejos profesionales. Elige tu mentor y horario."
+          en: "Schedule unlimited 45-minute sessions with expert mentors for personalized help with concepts, coding challenges, and career advice. Choose your mentor and schedule."
+      - name:
+          es: "Soporte comunitario vibrante"
+          en: "Vibrant community support"
+        desc:
+          es: "Accede a canales activos de Slack para la interacción entre pares y mentores, sesiones en vivo opcionales, sesiones de jam de codificación y reuniones en línea. Parte de una red global de alumnos de más de 4,000 miembros."
+          en: "Access active Slack channels for peer and mentor interaction, optional live sessions, coding jam sessions, and online meetups. Part of a global alumni network of over 4,000 members."
+      - name:
+          es: "Aprendizaje basado en proyectos"
+          en: "Project-based learning"
+        desc:
+          es: "Enfócate en construir un portafolio sólido de aplicaciones del mundo real, esencial para la búsqueda de empleo."
+          en: "Focus on building a strong portfolio of real-world applications, essential for job hunting."
+      - name:
+          es: "Certificación"
+          en: "Certification"
+        desc:
+          es: "Recibe un Certificado Oficial de Finalización de 4Geeks Academy al completar con éxito, reconocido por sus socios contratantes."
+          en: "Receive an Official 4Geeks Academy Completion Certificate upon successful completion, recognized by its hiring partners."
+      - name:
+          es: "Apoyo profesional"
+          en: "Career support"
+        desc:
+          es: "Califica para el mismo apoyo profesional de por vida (GeekForce) que los graduados de bootcamps intensivos, incluyendo coaching personalizado, optimización de currículum/LinkedIn y preparación para entrevistas."
+          en: "Qualify for the same lifetime professional support (GeekForce) as intensive bootcamp graduates, including personalized coaching, resume/LinkedIn optimization, and interview preparation."
+      - name:
+          es: "Garantía de empleo"
+          en: "Job guarantee"
+        desc:
+          es: "A menudo califica para la Garantía de Empleo, demostrando confianza en los resultados incluso para los estudiantes autodidactas."
+          en: "Often qualifies for the Job Guarantee, demonstrating confidence in the results even for self-taught students."
+  free_resources:
+    offerings:
+      - name:
+          es: "Trabajo previo introductorio gratuito"
+          en: "Free introductory pre-work"
+        desc:
+          es: "Un curso en línea autodirigido de 2 semanas que cubre HTML5, CSS y JavaScript básico. Permite a los estudiantes potenciales 'probar antes de comprar' y experimentar la metodología. Puede requerirse un pequeño depósito reembolsable."
+          en: "A 2-week self-directed online course covering basic HTML5, CSS, and JavaScript. Allows potential students to 'try before you buy' and experience the methodology. A small refundable deposit may be required."
+      - name:
+          es: "Talleres gratuitos"
+          en: "Free workshops"
+        desc:
+          es: "Talleres en línea semanales sobre temas populares como Data Science, React, Python, construcción de perfiles y preparación para entrevistas. Excelentes para obtener información práctica y explorar intereses."
+          en: "Weekly online workshops on popular topics such as Data Science, React, Python, profile building, and interview preparation. Great for getting hands-on information and exploring interests."
+      - name:
+          es: "Cursos introductorios gratuitos"
+          en: "Free introductory courses"
+        desc:
+          es: "Cursos gratuitos específicos como 'Start Coding with JavaScript' o 'Deep Dive into Python' ofrecen una manera sin riesgos de aprender los fundamentos y experimentar la plataforma LearnPack."
+          en: "Specific free courses like 'Start Coding with JavaScript' or 'Deep Dive into Python' offer a risk-free way to learn the basics and experience the LearnPack platform."
+    benefits:
+      es: "Ideal para explorar el interés en la tecnología, experimentar el estilo de enseñanza de 4Geeks Academy y desarrollar habilidades fundamentales con un compromiso mínimo."
+      en: "Ideal for exploring interest in technology, experiencing 4Geeks Academy's teaching style, and developing fundamental skills with minimal commitment."
+  history:
+    founder:
+      es: "Fundada por Marcelo Ricigliano en 2015 con la visión de proporcionar una educación tecnológica accesible y efectiva."
+      en: "Founded by Marcelo Ricigliano in 2015 with the vision of providing accessible and effective tech education."
+    achievements:
+      es: "Desde entonces, se han graduado más de 4,000 estudiantes a nivel mundial y continúa evolucionando su plan de estudios, integrando herramientas impulsadas por IA y aprendizaje adaptativo. Reconocida por su enfoque práctico y orientado a la carrera."
+      en: "Since then, over 4,000 students have graduated worldwide and it continues to evolve its curriculum, integrating AI-driven tools and adaptive learning. Recognized for its practical and career-oriented approach."
+    details:
+      es: "Marcelo Ricigliano ha estado fundando startups tecnológicas desde 2010. Antes de 4Geeks Academy, fue el CEO de Vikua, una startup de Smart City que fue nombrada como una de las 30 empresas tecnológicas más prometedoras en Latinoamérica por Forbes."
+      en: "Marcelo Ricigliano has been founding tech startups since 2010. Before 4Geeks Academy, he was the CEO of Vikua, a Smart City startup that was named one of the 30 most promising tech companies in Latin America by Forbes."
+  success:
+    placement_rates:
+      es: "Presume altas tasas de colocación laboral (84-93%) con graduados encontrando empleo dentro de los 90-270 días."
+      en: "Boasts high job placement rates (84-93%) with graduates finding employment within 90-270 days."
+    success_stories:
+      es: "Numerosas historias de éxito de personas que cambian de carrera desde diversos antecedentes no tecnológicos (por ejemplo, derecho, aplicación de la ley) que obtienen roles como desarrolladores de software o científicos de datos."
+      en: "Numerous success stories of people transitioning from diverse non-tech backgrounds (e.g., law, law enforcement) securing roles as software developers or data scientists."
+    companies:
+      es: "Los alumnos trabajan en empresas como Microsoft, Facebook (Meta), eBay, Boatsgroup y diversas startups."
+      en: "Alumni work at companies like Microsoft, Facebook (Meta), eBay, Boatsgroup, and various startups."
+    key_drivers:
+      es: "El énfasis en habilidades prácticas, mentoría sólida y apoyo profesional integral son los principales impulsores del éxito de los alumnos."
+      en: "The emphasis on practical skills, strong mentoring, and comprehensive career support are the key drivers of student success."
